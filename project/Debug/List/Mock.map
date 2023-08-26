@@ -1,0 +1,300 @@
+###############################################################################
+#
+# IAR ELF Linker V8.32.1.169/W32 for ARM                  15/Aug/2023  21:43:33
+# Copyright 2007-2018 IAR Systems AB.
+#
+#    Output file  =  D:\D19 PTIT\Thuc tap\FPT\Mock\project\Debug\Exe\Mock.out
+#    Map file     =  D:\D19 PTIT\Thuc tap\FPT\Mock\project\Debug\List\Mock.map
+#    Command line =  
+#        -f C:\Users\ADMIN\AppData\Local\Temp\EW82A3.tmp ("D:\D19 PTIT\Thuc
+#        tap\FPT\Mock\project\Debug\Obj\app.o" "D:\D19 PTIT\Thuc
+#        tap\FPT\Mock\project\Debug\Obj\gpio.o" "D:\D19 PTIT\Thuc
+#        tap\FPT\Mock\project\Debug\Obj\interrupt.o" "D:\D19 PTIT\Thuc
+#        tap\FPT\Mock\project\Debug\Obj\main.o" "D:\D19 PTIT\Thuc
+#        tap\FPT\Mock\project\Debug\Obj\PWM.o" "D:\D19 PTIT\Thuc
+#        tap\FPT\Mock\project\Debug\Obj\startup_MKL46Z4.o" "D:\D19 PTIT\Thuc
+#        tap\FPT\Mock\project\Debug\Obj\system.o" "D:\D19 PTIT\Thuc
+#        tap\FPT\Mock\project\Debug\Obj\system_MKL46Z4.o" "D:\D19 PTIT\Thuc
+#        tap\FPT\Mock\project\Debug\Obj\uart.o" --no_out_extension -o "D:\D19
+#        PTIT\Thuc tap\FPT\Mock\project\Debug\Exe\Mock.out" --map "D:\D19
+#        PTIT\Thuc tap\FPT\Mock\project\Debug\List\Mock.map" --config
+#        "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        8.2\arm\config\linker\NXP\MKL46Z256xxx4.icf" --semihosting --entry
+#        __iar_program_start --vfe --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because no calls to memory allocation
+functions were found in the application outside of system library
+functions, and there are calls to deallocation functions in the
+application.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at 0x0 { ro section .intvec };
+"P1":  place in [from 0x0 to 0x3ff] |
+                [from 0x410 to 0x3'ffff] { ro };
+define block CSTACK with size = 2K, alignment = 8 { };
+define block HEAP with size = 4K, alignment = 8 { };
+"P3":  place in [from 0x1fff'e000 to 0x1fff'ffff] |
+                [from 0x2000'0000 to 0x2000'5fff] {
+          rw, block CSTACK, block HEAP };
+"P5":  place in [from 0x400 to 0x40f] { section FlashConfig };
+initialize by copy { rw };
+
+No sections matched the following patterns:
+
+  ro section application_specific_ro  in "P2|P4"
+  rw section application_specific_rw  in "P2|P4"
+
+
+  Section            Kind         Address   Size  Object
+  -------            ----         -------   ----  ------
+"A0":                                       0xc0
+  .intvec            ro code          0x0   0xc0  startup_MKL46Z4.o [1]
+                                   - 0xc0   0xc0
+
+"P1", part 1 of 2:                          0x14
+  .rodata            const           0xc0    0x0  copy_init3.o [3]
+  Initializer bytes  const           0xc0   0x14  <for P3 s0>
+                                   - 0xd4   0x14
+
+"P5":                                       0x10
+  FlashConfig        ro code        0x400   0x10  startup_MKL46Z4.o [1]
+                                  - 0x410   0x10
+
+"P1", part 2 of 2:                         0xa98
+  .text              ro code        0x410  0x1a0  app.o [1]
+  .text              ro code        0x5b0  0x124  gpio.o [1]
+  .text              ro code        0x6d4   0xd8  PWM.o [1]
+  .text              ro code        0x7ac  0x186  uart.o [1]
+  .text              ro code        0x932    0x2  startup_MKL46Z4.o [1]
+  .text              ro code        0x934  0x154  iar_Stoulx.o [2]
+  .text              ro code        0xa88   0xae  I32DivModFast.o [3]
+  .text              ro code        0xb36    0x8  abs.o [2]
+  .text              ro code        0xb3e    0x2  startup_MKL46Z4.o [1]
+  .text              ro code        0xb40   0x16  memchr.o [3]
+  .text              ro code        0xb56    0x2  startup_MKL46Z4.o [1]
+  .text              ro code        0xb58    0x2  IntDivZer.o [3]
+  .text              ro code        0xb5a    0x2  startup_MKL46Z4.o [1]
+  .text              ro code        0xb5c   0xd0  interrupt.o [1]
+  .text              ro code        0xc2c   0x70  system.o [1]
+  .rodata            const          0xc9c   0x50  iar_Stoulx.o [2]
+  .text              ro code        0xcec   0x30  copy_init3.o [3]
+  .text              ro code        0xd1c   0x28  main.o [1]
+  .text              ro code        0xd44   0x28  data_init.o [3]
+  .text              ro code        0xd6c   0x24  startup_MKL46Z4.o [1]
+  .iar.init_table    const          0xd90   0x14  - Linker created -
+  .text              ro code        0xda4   0x1e  cmain.o [3]
+  .text              ro code        0xdc2    0x4  low_level_init.o [2]
+  .text              ro code        0xdc6    0x8  exit.o [2]
+  .text              ro code        0xdce    0x2  startup_MKL46Z4.o [1]
+  .text              ro code        0xdd0    0xa  cexit.o [3]
+  .text              ro code        0xddc   0x14  exit.o [4]
+  .rodata            const          0xdf0   0x1c  app.o [1]
+  .rodata            const          0xe0c   0x1c  app.o [1]
+  .text              ro code        0xe28    0xc  system_MKL46Z4.o [1]
+  .text              ro code        0xe34    0xc  cstartup_M.o [3]
+  .text              ro code        0xe40    0x8  startup_MKL46Z4.o [1]
+  .text              ro code        0xe48    0x8  startup_MKL46Z4.o [1]
+  .text              ro code        0xe50    0x8  startup_MKL46Z4.o [1]
+  .text              ro code        0xe58    0x8  startup_MKL46Z4.o [1]
+  .text              ro code        0xe60    0x8  startup_MKL46Z4.o [1]
+  .text              ro code        0xe68    0x8  startup_MKL46Z4.o [1]
+  .text              ro code        0xe70    0x8  startup_MKL46Z4.o [1]
+  .text              ro code        0xe78    0x8  startup_MKL46Z4.o [1]
+  .text              ro code        0xe80    0x8  startup_MKL46Z4.o [1]
+  .text              ro code        0xe88    0x8  startup_MKL46Z4.o [1]
+  .text              ro code        0xe90    0x8  startup_MKL46Z4.o [1]
+  .text              ro code        0xe98    0x8  startup_MKL46Z4.o [1]
+  .text              ro code        0xea0    0x8  startup_MKL46Z4.o [1]
+                                  - 0xea8  0xa98
+
+"P3", part 1 of 2:                          0x14
+  P3 s0                       0x1fff'e000   0x14  <Init block>
+    .data            inited   0x1fff'e000    0x4  PWM.o [1]
+    .bss             inited   0x1fff'e004    0x4  app.o [1]
+    .bss             inited   0x1fff'e008    0x4  app.o [1]
+    .bss             inited   0x1fff'e00c    0x4  app.o [1]
+    .bss             inited   0x1fff'e010    0x2  uart.o [1]
+    .bss             inited   0x1fff'e012    0x1  app.o [1]
+                            - 0x1fff'e014   0x14
+
+"P3", part 2 of 2:                         0x800
+  CSTACK                      0x1fff'e018  0x800  <Block>
+    CSTACK           uninit   0x1fff'e018  0x800  <Block tail>
+                            - 0x1fff'e818  0x800
+
+Unused ranges:
+
+         From           To      Size
+         ----           --      ----
+         0xd4        0x3ff     0x32c
+        0xea8     0x3'ffff  0x3'f158
+  0x1fff'e014  0x1fff'e017       0x4
+  0x1fff'e818  0x1fff'ffff    0x17e8
+  0x2000'0000  0x2000'5fff    0x6000
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address      Size
+          -------      ----
+Copy (__iar_copy_init3)
+    1 source range, total size 0x14 (105% of destination):
+                 0xc0  0x14
+    1 destination range, total size 0x13:
+          0x1fff'e000  0x13
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module             ro code  ro data  rw data
+    ------             -------  -------  -------
+command line/config:
+    --------------------------------------------
+    Total:
+
+D:\D19 PTIT\Thuc tap\FPT\Mock\project\Debug\Obj: [1]
+    PWM.o                  216        4        4
+    app.o                  416       69       13
+    gpio.o                 292
+    interrupt.o            208
+    main.o                  40
+    startup_MKL46Z4.o      358
+    system.o               112
+    system_MKL46Z4.o        12
+    uart.o                 390        2        2
+    --------------------------------------------
+    Total:               2 044       75       19
+
+dl6M_tln.a: [2]
+    abs.o                    8
+    exit.o                   8
+    iar_Stoulx.o           340       80
+    low_level_init.o         4
+    --------------------------------------------
+    Total:                 360       80
+
+rt6M_tl.a: [3]
+    I32DivModFast.o        174
+    IntDivZer.o              2
+    cexit.o                 10
+    cmain.o                 30
+    copy_init3.o            48
+    cstartup_M.o            12
+    data_init.o             40
+    memchr.o                22
+    --------------------------------------------
+    Total:                 338
+
+shb_l.a: [4]
+    exit.o                  20
+    --------------------------------------------
+    Total:                  20
+
+    Gaps                     2
+    Linker created                   21    2 048
+------------------------------------------------
+    Grand Total:         2 764      176    2 067
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                       Address   Size  Type      Object
+-----                       -------   ----  ----      ------
+.iar.init_table$$Base         0xd90          --   Gb  - Linker created -
+.iar.init_table$$Limit        0xda4          --   Gb  - Linker created -
+?main                         0xda5         Code  Gb  cmain.o [3]
+CSTACK$$Base            0x1fff'e018          --   Gb  - Linker created -
+CSTACK$$Limit           0x1fff'e818          --   Gb  - Linker created -
+Clock_Init                    0xc2d   0x70  Code  Gb  system.o [1]
+Interrupt_Init                0xc15   0x18  Code  Gb  interrupt.o [1]
+Led_Init                      0x5b1   0x48  Code  Gb  gpio.o [1]
+NVIC_ClearPendingIRQ          0xb6b    0xe  Code  Lc  interrupt.o [1]
+NVIC_EnableIRQ                0xb5d    0xe  Code  Lc  interrupt.o [1]
+NVIC_SetPriority              0xb79   0x8a  Code  Lc  interrupt.o [1]
+Off_Red_Led                   0x681    0xe  Code  Gb  gpio.o [1]
+On_Red_Led                    0x68f    0xe  Code  Gb  gpio.o [1]
+PORTC_PORTD_IRQHandler        0x719   0x2c  Code  Gb  PWM.o [1]
+Region$$Table$$Base           0xd90          --   Gb  - Linker created -
+Region$$Table$$Limit          0xda4          --   Gb  - Linker created -
+SW_Init                       0x5f9   0x88  Code  Gb  gpio.o [1]
+SW_Mode                       0x411    0xc  Code  Gb  app.o [1]
+SystemInit                    0xe29    0x8  Code  Gb  system_MKL46Z4.o [1]
+UART_Init                     0x7ad  0x100  Code  Gb  uart.o [1]
+UART_putstr                   0x911   0x22  Code  Gb  uart.o [1]
+UartRxByte                    0x8ad   0x12  Code  Gb  uart.o [1]
+Uart_Mode                     0x41d    0xe  Code  Gb  app.o [1]
+__Vectors                       0x0          --   Gb  startup_MKL46Z4.o [1]
+__Vectors_End                  0xc0         Data  Gb  startup_MKL46Z4.o [1]
+__Vectors_Size {Abs}           0xc0          --   Gb  startup_MKL46Z4.o [1]
+__aeabi_idiv0                 0xb59         Code  Gb  IntDivZer.o [3]
+__aeabi_uidiv                 0xa89         Code  Gb  I32DivModFast.o [3]
+__aeabi_uidivmod              0xa89         Code  Gb  I32DivModFast.o [3]
+__cmain                       0xda5         Code  Gb  cmain.o [3]
+__exit                        0xddd   0x14  Code  Gb  exit.o [4]
+__iar_Memchr                  0xb41         Code  Gb  memchr.o [3]
+__iar_Stoulx                  0x935  0x144  Code  Gb  iar_Stoulx.o [2]
+__iar_copy_init3              0xced   0x30  Code  Gb  copy_init3.o [3]
+__iar_data_init3              0xd45   0x28  Code  Gb  data_init.o [3]
+__iar_program_start           0xe35         Code  Gb  cstartup_M.o [3]
+__low_level_init              0xdc3    0x4  Code  Gb  low_level_init.o [2]
+__vector_table                  0x0         Data  Gb  startup_MKL46Z4.o [1]
+__vector_table_0x1c            0x1c         Data  Gb  startup_MKL46Z4.o [1]
+_call_main                    0xdb1         Code  Gb  cmain.o [3]
+_exit                         0xdd1         Code  Gb  cexit.o [3]
+_main                         0xdbf         Code  Gb  cmain.o [3]
+abs                           0xb37    0x8  Code  Gb  abs.o [2]
+atoi                          0xa79    0x4  Code  Gb  iar_Stoulx.o [2]
+canT                    0x1fff'e010    0x2  Data  Gb  uart.o [1]
+check_uart_mode         0x1fff'e004    0x4  Data  Lc  app.o [1]
+control                       0x42b  0x16e  Code  Gb  app.o [1]
+delayGreenLED           0x1fff'e000    0x4  Data  Gb  PWM.o [1]
+digits                        0xcc4   0x28  Data  Lc  iar_Stoulx.o [2]
+exit                          0xdc7    0x8  Code  Gb  exit.o [2]
+i                       0x1fff'e00c    0x4  Data  Gb  app.o [1]
+main                          0xd1d   0x28  Code  Gb  main.o [1]
+memchr                        0xb41         Code  Gb  memchr.o [3]
+msg                     0x1fff'e012    0x1  Data  Gb  app.o [1]
+ndigs                         0xc9c   0x28  Data  Lc  iar_Stoulx.o [2]
+pwm_Init                      0x6d5   0x44  Code  Gb  PWM.o [1]
+speed                         0x745   0x3c  Code  Gb  PWM.o [1]
+status                  0x1fff'e008    0x4  Data  Lc  app.o [1]
+uart_putchar                  0x8bf   0x24  Code  Gb  uart.o [1]
+
+
+[1] = D:\D19 PTIT\Thuc tap\FPT\Mock\project\Debug\Obj
+[2] = dl6M_tln.a
+[3] = rt6M_tl.a
+[4] = shb_l.a
+
+  2 764 bytes of readonly  code memory
+    176 bytes of readonly  data memory
+  2 067 bytes of readwrite data memory
+
+Errors: none
+Warnings: none
